@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  laravel:
+    build:
+      context: "./php8.1"
+    container_name: "laravel"
+    volumes:
+      - "${LARAVEL_APP_PATH}:/var/www/html"
+      - "./php8.1/config:/usr/local/etc/php/"
+      - "./php8.1/apache/config:/etc/apache2"
+    restart: always
+    extra_hosts:
+      - "laravel.test:127.0.0.1"
+    hostname: laravel.test
+    domainname: test
+    ports:
+      - "80:80"
+    depends_on:
+      - mysql
+    links:
+      - mysql
+  mysql:
+    image: mysql:8.0.33
+    container_name: mysql
+    restart: always
+    volumes:
+      - ./mysql-data:/var/lib/mysql/
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env
