@@ -6,8 +6,8 @@ services:
     container_name: "laravel"
     volumes:
       - "${LARAVEL_APP_PATH}:/var/www/html"
-      - "./php8.1/config:/usr/local/etc/php/"
-      - "./php8.1/apache/config:/etc/apache2"
+      - "./php8.1/config/php.ini:/usr/local/etc/php/php.ini"
+      - "./php8.1/apache/config/sites-available/000-default.conf:/etc/apache2/sites-available/000-default.conf"
     restart: always
     extra_hosts:
       - "laravel.test:127.0.0.1"

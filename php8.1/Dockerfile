@@ -57,5 +57,7 @@ RUN apt update \
       && ln -s /opt/yarn-v$YARN_VERSION/bin/yarnpkg /usr/local/bin/yarnpkg \
       && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz \
       && a2enmod rewrite \
-      && a2enmod mime
+      && a2enmod mime \
+
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+COPY ./config/php.ini /usr/local/etc/php/
