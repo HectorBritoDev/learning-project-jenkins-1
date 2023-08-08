@@ -29,3 +29,14 @@ services:
       - "3306:3306"
     env_file:
       - .env
+  jenkins:
+    build:
+      context: ./jenkins
+    restart: always
+    container_name: jenkins
+    volumes:
+      - ./jenkins/jenkins-home:/var/jenkins_home/
+    ports:
+      - "8080:8080"
+      - "5000:5000"
+    user: root
