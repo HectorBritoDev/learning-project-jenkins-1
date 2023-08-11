@@ -1,0 +1,6 @@
+version: "2"
+authtoken: 2OyhEiuwjRvVZ2jjjR02hQLggOt_7QxudPrKnG4fj49Voez4P
+tunnels:
+  jenkins:
+    proto: http
+    addr: 172.17.0.1:8080
